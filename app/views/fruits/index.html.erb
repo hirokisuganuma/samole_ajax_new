@@ -1,0 +1,36 @@
+<p>
+  <%= radio_button_tag :fruit, '1' %>
+  <%= label_tag 'ドラゴンフルーツ' %>
+</p>
+
+<p>
+  <%= radio_button_tag :fruit, '2' %>
+  <%= label_tag 'グァバ' %>
+</p>
+
+<p>
+  <%= radio_button_tag :fruit, '3' %>
+  <%= label_tag 'スターフルーツ' %>
+</p>
+
+<p id="content"></p>
+
+<script>
+    $(function () {
+        // ラジオボタンを選択変更したら実行
+        $('input[name="fruit"]').change(function () {
+            // value値取得
+            var val = $(this).val();
+            // ajax
+            $.ajax({
+                type: 'GET',
+                url: '/fruits/content',
+                data: { fruit: { id: val } },
+                dataType: 'json',  //json形式指定
+                success:function(result){
+                  $('#content').text(result.content);
+                }
+            });
+        });
+    });
+</script>
