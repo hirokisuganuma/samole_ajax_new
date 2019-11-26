@@ -17,17 +17,17 @@
 
 <script>
     $(function () {
-        // ラジオボタンを選択変更したら実行
+        // ラジオボタンを選択変更したら実行(.changeのこと)
         $('input[name="fruit"]').change(function () {
-            // value値取得
+            // value値取得（radio_button_tagで生成されるHTMLのvalueを取りに行く詳細見たければchromeの開発者ツールとかで生成されているHTMLを確認してね）
             var val = $(this).val();
-            // ajax
+            // ajaxメソッド詳細知りたければググるべしほぼお作法通りに送ればよいだけ気を付けるのはdata: { fruit: { id: val } はハッシュの形になってることくらい
             $.ajax({
                 type: 'GET',
                 url: '/fruits/content',
                 data: { fruit: { id: val } },
                 dataType: 'json',  //json形式指定
-                success:function(result){
+                success:function(result){　// ここからはサーバー側（要はrails様）からのレスポンスがあり成功した場合の処理id="content"の中身に取得したresult.contentを入れてるだけ
                   $('#content').text(result.content);
                 }
             });
