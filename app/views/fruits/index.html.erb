@@ -15,6 +15,15 @@
 
 <p id="content"></p>
 
+ここから下新しいAjax通信パターン
+
+<%= form_with model: @vegetable, url: ajax_communication_path, class: "ajax_communication" do |f| %>
+  <%= f.text_field :content %>
+  <%= f.submit %>
+<% end %>
+
+<ul class="ajax_result"></ul>
+
 <script>
     $(function () {
         // ラジオボタンを選択変更したら実行(.changeのこと)
@@ -31,6 +40,10 @@
                   $('#content').text(result.content);
                 }
             });
+        });
+        $(document).on("ajax:success", ".ajax_communication", function(e) {
+        var result = e.detail[0].content
+        $(".ajax_result").append('<li>' + result + '</li>');
         });
     });
 </script>

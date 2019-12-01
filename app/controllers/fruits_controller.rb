@@ -5,6 +5,7 @@ class FruitsController < ApplicationController
   # GET /fruits.json
   def index
     @fruits = Fruit.all
+    @vegetable = Vegetable.new
   end
 
   # GET /fruits/1
@@ -61,7 +62,7 @@ class FruitsController < ApplicationController
     end
   end
 
-  def content　#ここでフロントから送られてきたデータを処理して戻しているデバックで何か確認したかったらpry-rails入れてあるのでこの下にbingind.pryはさんでparamsとか打てば何が送られているかわかる
+  def content #ここでフロントから送られてきたデータを処理して戻しているデバックで何か確認したかったらpry-rails入れてあるのでこの下にbingind.pryはさんでparamsとか打てば何が送られているかわかる
     @content = Fruit.find(fruit_params[:id]).content
     render json: {:content => @content}#あと気を付けるのはデータを返す時にハッシュの形にしといたほうが扱いやすいかなってくらいjsonって形式じゃないとJSがデータを認識しないのでrender json:っていうのはお作法だと思ってください
   end
