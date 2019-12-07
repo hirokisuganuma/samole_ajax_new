@@ -12,13 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20191201013011) do
 
-  create_table "fruits", force: :cascade do |t|
+  create_table "fruits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "vegetables", force: :cascade do |t|
+  create_table "vegetables", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
