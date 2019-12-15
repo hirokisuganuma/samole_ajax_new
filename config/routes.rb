@@ -5,5 +5,6 @@ Rails.application.routes.draw do
       get 'content'
     end
   end
+  resources :vegetables
   post  '/vegetables/ajax_communication' , to: 'vegetables#ajax_communication',as:'ajax_communication'
 end
